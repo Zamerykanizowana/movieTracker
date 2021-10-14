@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
             .addHeader("x-rapidapi-key", "YOUR_KEY")
             .build()
 
-        val response = client.newCall(request).execute()
-
+//        val response = client.newCall(request).execute()
+//
 //        val textView = findViewById<TextView>(R.id.text1)
 //        textView.text = "test 123"
     }
