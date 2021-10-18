@@ -9,6 +9,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONObject
 import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             responseIMDb = loadTheData()
             Log.i("DEBUG", responseIMDb)
+            val options = JSONObject(responseIMDb).getJSONArray("d") as JSONArray
+            for (i in 0 until options.length()) {
+                val id = options.getJSONObject(i).getString("id")
+                val title = options.getJSONObject(i).getString("l")
+                Log.i("DEBUG", "ID: $id and title is : $title")
+            }
         }
 //        textView.text = responseIMDb
         val textView = findViewById<TextView>(R.id.text1)
